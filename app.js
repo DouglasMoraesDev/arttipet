@@ -21,6 +21,13 @@ document.getElementById('loginBtn').addEventListener('click', () => {
     }
 });
 
+// Verifica se o usuário está logado ao carregar a página
+if (localStorage.getItem('isLoggedIn') === 'true') {
+    document.getElementById('loginDiv').style.display = 'none';
+    document.getElementById('dashboard').style.display = 'block';
+    loadClients();
+}
+
 // Função para carregar os clientes
 function loadClients() {
     const clients = JSON.parse(localStorage.getItem('clients')) || [];
