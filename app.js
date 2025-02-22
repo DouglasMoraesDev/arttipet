@@ -1,7 +1,5 @@
-const users = [
-    { username: 'Diego', password: '1234' },
-    { username: 'admin', password: 'admin' } // Novo usuário admin
-];
+const username = ['Diego', 'admin'];
+const password = ['1234', 'admin'];
 
 // Função de login
 document.getElementById('loginBtn').addEventListener('click', () => {
@@ -13,9 +11,7 @@ document.getElementById('loginBtn').addEventListener('click', () => {
         return;
     }
 
-    const validUser = users.find(user => user.username === inputUsername && user.password === inputPassword);
-
-    if (validUser) {
+    if (inputUsername === username && inputPassword === password) {
         alert('Login bem-sucedido!');
         document.getElementById('loginDiv').style.display = 'none';
         document.getElementById('dashboard').style.display = 'block';
