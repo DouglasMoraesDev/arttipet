@@ -1,5 +1,8 @@
-const username = ['Diego', 'admin'];
-const password = ['1234', 'admin'];
+// Usuários existentes (usuário padrão e administrador)
+const users = [
+    { username: 'Diego', password: '1234' },
+    { username: 'admin', password: 'admin' }
+];
 
 // Função de login
 document.getElementById('loginBtn').addEventListener('click', () => {
@@ -11,10 +14,14 @@ document.getElementById('loginBtn').addEventListener('click', () => {
         return;
     }
 
-    if (inputUsername === username && inputPassword === password) {
+    // Verificar se o usuário e senha estão corretos
+    const user = users.find(u => u.username === inputUsername && u.password === inputPassword);
+
+    if (user) {
         alert('Login bem-sucedido!');
         document.getElementById('loginDiv').style.display = 'none';
         document.getElementById('dashboard').style.display = 'block';
+        localStorage.setItem('isLoggedIn', 'true'); // Salva o login no localStorage
         loadClients();
     } else {
         alert('Usuário ou senha inválidos!');
