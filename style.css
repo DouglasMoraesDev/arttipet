@@ -118,3 +118,10 @@ ul#clients li {
     background-color: #f66e0e;
     border-radius: 4px;
 }
+
+footer, a{
+    font-family: 'Oxanium';
+    color: aliceblue;
+    bottom: 0 ;
+    text-align: center;
+}
