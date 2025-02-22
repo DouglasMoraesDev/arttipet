@@ -14,6 +14,7 @@ body {
 
 /* Estilo para os containers dentro do dashboard */
 .dashboard-container {
+    font-family: 'Montserrat';
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -27,8 +28,10 @@ body {
 
 /* Estilo da tela de login */
 #loginDiv {
-    color: #f66e0e;
-    background: #fbf8f8;
+    font-family: 'Oxanium';
+    font-size: 1.25rem;
+    color: #fffefe;
+    background: #f66e0e;
     padding: 20px;
     border-radius: 8px;
     text-align: center;
@@ -38,7 +41,8 @@ body {
 
 /* Títulos */
 h2, h3 {
-    font-size: 1.5rem;
+    font-family: 'Oxanium';
+    font-size: 3rem;
     font-weight: 600;
     color: #000000;
     text-align: center;
