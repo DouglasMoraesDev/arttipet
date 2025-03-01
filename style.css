@@ -120,18 +120,6 @@ button:hover {
     color: rgb(255, 254, 254);
 }
 
-/* Media query para dispositivos móveis */
-@media screen and (max-width: 600px) {
-    #clientTable table {
-        font-size: 0.8em;  /* Reduz a fonte para caber melhor na tela */
-    }
-    
-    #clientTable th, 
-    #clientTable td {
-        padding: 6px 4px;  /* Reduz o espaçamento interno */
-        min-width: 60px;   /* Diminui a largura mínima das células */
-    }
-}
 
 /* Lista de Clientes com 10 Pontos */
 ul#clients {
@@ -151,4 +139,55 @@ footer, a{
     color: aliceblue;
     bottom: 0 ;
     text-align: center;
+}
+
+/* Media query para dispositivos móveis */
+@media screen and (max-width: 600px) {
+    /* Ajuste para o container geral */
+    .container {
+        width: 95%;
+        padding: 10px;
+    }
+    
+    /* Login */
+    #loginDiv {
+        width: 90%;
+        font-size: 1rem;
+        padding: 15px;
+    }
+    
+    /* Dashboard Containers */
+    .dashboard-container {
+        margin: 10px;
+        padding: 15px;
+    }
+    
+    /* Títulos */
+    h1 {
+        font-size: 2rem;
+    }
+    h2, h3 {
+        font-size: 1.25rem;
+    }
+    
+    /* Inputs e Botões */
+    input[type="text"],
+    input[type="email"],
+    input[type="password"],
+    input[type="number"],
+    select,
+    button {
+        font-size: 0.9em;
+    }
+    
+    /* Tabela de Clientes - ajuste */
+    #clientTable table {
+        font-size: 0.8em;
+    }
+    
+    #clientTable th, 
+    #clientTable td {
+        padding: 6px 4px;
+        min-width: 60px;
+    }
 }
