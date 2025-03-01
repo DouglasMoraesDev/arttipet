@@ -72,6 +72,21 @@ function addClient() {
         return;
     }
 
+    // Obtém a lista atual de clientes
+    const clients = JSON.parse(localStorage.getItem('clients')) || [];
+
+    // Verifica se já existe um cliente com o mesmo nome, telefone ou email
+    const existingClient = clients.find(client =>
+        client.fullName === clientFullName ||
+        client.phone === clientPhone ||
+        client.email === clientEmail
+    );
+   
+    if (existingClient) {
+       alert('Cliente já está na lista!');
+       return;
+    }
+
     const newClient = {
         fullName: clientFullName,
         phone: clientPhone,
@@ -79,7 +94,6 @@ function addClient() {
         points: clientPoints
     };
 
-    const clients = JSON.parse(localStorage.getItem('clients')) || [];
     clients.push(newClient);
     localStorage.setItem('clients', JSON.stringify(clients));
     
