@@ -48,8 +48,8 @@ function loadClients() {
                 <td>${client.email}</td>
                 <td>${client.phone}</td>
                 <td>${client.points}</td>
-                <td>
-                    <div style="display: inline-flex; gap: 5px;">
+                <td style="white-space: nowrap;">
+                    <div style="display: inline-flex; flex-wrap: nowrap; gap: 5px;">
                         <button onclick="editClient(${index})">Editar</button>
                         <button onclick="deleteClient(${index})">Excluir</button>
                     </div>
