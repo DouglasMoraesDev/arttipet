@@ -97,10 +97,13 @@ button:hover {
 #clientTable {
     margin-top: 20px;
     width: 100%;
+    
     overflow-x: auto;
+    
 }
 
 #clientTable table {
+    
     width: 100%;
     border-collapse: collapse;
 }
@@ -115,6 +118,19 @@ button:hover {
 #clientTable th {
     background-color: #00000d;
     color: rgb(255, 254, 254);
+}
+
+/* Media query para dispositivos móveis */
+@media screen and (max-width: 600px) {
+    #clientTable table {
+        font-size: 0.8em;  /* Reduz a fonte para caber melhor na tela */
+    }
+    
+    #clientTable th, 
+    #clientTable td {
+        padding: 6px 4px;  /* Reduz o espaçamento interno */
+        min-width: 60px;   /* Diminui a largura mínima das células */
+    }
 }
 
 /* Lista de Clientes com 10 Pontos */
