@@ -115,6 +115,11 @@ button:hover {
     border: 1px solid #000000;
 }
 
+#clientTable th {
+    background-color: #00000d;
+    color: rgb(255, 254, 254);
+}
+
 
 /* Lista de Clientes com 10 Pontos */
 ul#clients {
