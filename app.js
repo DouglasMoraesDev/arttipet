@@ -49,8 +49,10 @@ function loadClients() {
                 <td>${client.phone}</td>
                 <td>${client.points}</td>
                 <td>
-                    <button onclick="editClient(${index})">Editar</button>
-                    <button onclick="deleteClient(${index})">Excluir</button>
+                    <div style="display: inline-flex; gap: 5px;">
+                        <button onclick="editClient(${index})">Editar</button>
+                        <button onclick="deleteClient(${index})">Excluir</button>
+                    </div>
                 </td>
             </tr>
         `;
