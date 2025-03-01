@@ -35,19 +35,23 @@ if (localStorage.getItem('isLoggedIn') === 'true') {
     loadClients();
 }
 
-// Função para carregar os clientes
+// Função para carregar os clientes com botões de editar e excluir
 function loadClients() {
     const clients = JSON.parse(localStorage.getItem('clients')) || [];
     const clientTable = document.getElementById('clientTable');
-    let tableContent = '<table><tr><th>Nome Completo</th><th>Email</th><th>Telefone</th><th>Pontos</th></tr>';
+    let tableContent = '<table><tr><th>Nome Completo</th><th>Email</th><th>Telefone</th><th>Pontos</th><th>Ações</th></tr>';
     
-    clients.forEach(client => {
+    clients.forEach((client, index) => {
         tableContent += `
             <tr>
                 <td>${client.fullName}</td>
                 <td>${client.email}</td>
                 <td>${client.phone}</td>
                 <td>${client.points}</td>
+                <td>
+                    <button onclick="editClient(${index})">Editar</button>
+                    <button onclick="deleteClient(${index})">Excluir</button>
+                </td>
             </tr>
         `;
     });
@@ -56,8 +60,8 @@ function loadClients() {
     clientTable.innerHTML = tableContent;
 }
 
-// Função para salvar um cliente
-document.getElementById('saveClientBtn').addEventListener('click', () => {
+// Função para adicionar um novo cliente
+function addClient() {
     const clientFullName = document.getElementById('clientFullName').value;
     const clientPhone = document.getElementById('clientPhone').value;
     const clientEmail = document.getElementById('clientEmail').value;
@@ -78,13 +82,49 @@ document.getElementById('saveClientBtn').addEventListener('click', () => {
     const clients = JSON.parse(localStorage.getItem('clients')) || [];
     clients.push(newClient);
     localStorage.setItem('clients', JSON.stringify(clients));
-    loadClients();
-    document.getElementById('clientFullName').value = '';
-    document.getElementById('clientPhone').value = '';
-    document.getElementById('clientEmail').value = '';
-    document.getElementById('clientPoints').value = 0;
-});
+    
+    // Recarrega a página para atualizar a tabela
+    location.reload();
+}
 
+// Atribuir a função de adicionar cliente ao botão
+document.getElementById('saveClientBtn').onclick = addClient;
+
+// Função para excluir um cliente
+function deleteClient(index) {
+    const clients = JSON.parse(localStorage.getItem('clients')) || [];
+    clients.splice(index, 1);
+    localStorage.setItem('clients', JSON.stringify(clients));
+
+    // Recarrega a página para atualizar a tabela
+    location.reload();
+}
+
+// Função para editar um cliente
+function editClient(index) {
+    const clients = JSON.parse(localStorage.getItem('clients')) || [];
+    const client = clients[index];
+    document.getElementById('clientFullName').value = client.fullName;
+    document.getElementById('clientPhone').value = client.phone;
+    document.getElementById('clientEmail').value = client.email;
+    document.getElementById('clientPoints').value = client.points;
+    
+    const saveButton = document.getElementById('saveClientBtn');
+    saveButton.textContent = "Atualizar Cliente";
+    saveButton.onclick = function() {
+        client.fullName = document.getElementById('clientFullName').value;
+        client.phone = document.getElementById('clientPhone').value;
+        client.email = document.getElementById('clientEmail').value;
+        client.points = parseInt(document.getElementById('clientPoints').value);
+        clients[index] = client;
+        localStorage.setItem('clients', JSON.stringify(clients));
+
+        // Recarrega a página para atualizar a tabela
+        location.reload();
+    };
+}
+
+// Função para buscar clientes 
 document.getElementById('searchBtn').addEventListener('click', () => {
     const searchTerm = document.getElementById('searchClient').value.toLowerCase();
 
@@ -102,7 +142,7 @@ document.getElementById('searchBtn').addEventListener('click', () => {
     });
 });
 
-// Adicionar pontos ao cliente selecionado
+// Adicionar pontos ao cliente selecionado (mantida do original, com recarregamento)
 document.getElementById('addPointsBtn').addEventListener('click', () => {
     const selectedClientName = document.getElementById('clientSelect').value;
     const pointsToAdd = parseInt(document.getElementById('points').value);
@@ -118,16 +158,20 @@ document.getElementById('addPointsBtn').addEventListener('click', () => {
     if (clientIndex !== -1) {
         clients[clientIndex].points += pointsToAdd;
         localStorage.setItem('clients', JSON.stringify(clients));
-        loadClients();
         alert(`Pontos adicionados com sucesso ao cliente ${selectedClientName}`);
+
+        // Recarrega a página para atualizar a tabela
+        location.reload();
     }
 });
 
 // Zerar clientes (limpar o localStorage)
 document.getElementById('resetClientsBtn').addEventListener('click', () => {
     localStorage.removeItem('clients');
-    loadClients();
     alert('Todos os clientes foram removidos!');
+
+    // Recarrega a página para atualizar a tabela
+    location.reload();
 });
 
 // Função para exportar clientes
@@ -155,8 +199,10 @@ document.getElementById('importFile').addEventListener('change', event => {
             try {
                 const importedClients = JSON.parse(e.target.result);
                 localStorage.setItem('clients', JSON.stringify(importedClients));
-                loadClients();
                 alert('Clientes importados com sucesso!');
+
+                // Recarrega a página para atualizar a tabela
+                location.reload();
             } catch (error) {
                 alert('Erro ao importar o arquivo. Certifique-se de que o arquivo está no formato correto.');
             }
@@ -187,7 +233,7 @@ function displayClients() {
     });
 }
 
-// Função para atualizar os pontos do cliente (exemplo)
+// Função para atualizar os pontos do cliente 
 function updateClientPoints(clientId, points) {
     const clients = JSON.parse(localStorage.getItem('clients')) || [];
     const clientIndex = clients.findIndex(c => c.id === clientId);
