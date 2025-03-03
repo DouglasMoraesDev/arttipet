@@ -14,7 +14,6 @@ document.getElementById('loginBtn').addEventListener('click', () => {
         return;
     }
     
-
     // Verificar se o usuário e senha estão corretos
     const user = users.find(u => u.username === inputUsername && u.password === inputPassword);
 
