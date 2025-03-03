@@ -1,7 +1,7 @@
 /* Estilos Globais */
 body {
-    color: aliceblue;
-    background-color: black;
+    color: #f0f8ff;
+    background-color: #eec871;
     font-family: "Montserrat", sans-serif;
 }
 
@@ -19,8 +19,8 @@ body {
     flex-direction: column;
     align-items: center;
     overflow-x: auto;
-    background-color: #f66e0e;
-    border: 1px solid #fbf8f8;
+    background-color: #eec871;
+    border: 1px solid #000000;
     border-radius: 8px;
     margin: 5px ;
     padding: 5px;
@@ -28,8 +28,8 @@ body {
 
 /* Estilos específicos para o container da tabela de clientes */
 #clientTableContainer {
-    background-color: #f66e0e;
-    border: 1px solid #95A5A6;
+    background-color: #eec871;
+    border: 1px solid #000000;
     border-radius: 8px;
     margin: 20px;
     padding: 20px;
@@ -39,7 +39,7 @@ body {
     text-align: center;
     font-family: 'Oxanium';
     font-size: 1.75rem;
-    color: #F5F5F5;
+    color: #000000;
 }
 
 /* Garantir que os botões de ação fiquem lado a lado */
@@ -63,7 +63,7 @@ label {
     font-family: 'Oxanium';
     font-size: 1.25rem;
     color: #fffefe;
-    background: #f66e0e;
+    background: #eec871;
     padding: 20px;
     border-radius: 8px;
     text-align: center;
@@ -83,7 +83,7 @@ h1{
     text-align: center;
     font-family: 'Oxanium';
     font-size: 2.75rem;
-    color: black;
+    color: #000000;
 }
 
 
@@ -145,7 +145,7 @@ button:hover {
 
 #clientTable th {
     background-color: #00000d;
-    color: rgb(255, 254, 254);
+    color: #fffefe;
 }
 
 
@@ -158,13 +158,13 @@ ul#clients {
 ul#clients li {
     margin: 1.5rem 0;
     padding: 10px;
-    background-color: #f66e0e;
+    background-color: #eec871;
     border-radius: 4px;
 }
 
 footer, a{
     font-family: 'Oxanium';
-    color: aliceblue;
+    color: #000000;
     bottom: 0 ;
     text-align: center;
 }

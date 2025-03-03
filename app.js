@@ -1,6 +1,6 @@
 // Usuários existentes (usuário padrão e administrador)
 const users = [
-    { username: 'Diego', password: '1234' },
+    { username: 'ArttiPet', password: 'arttipet2025' },
     { username: 'admin', password: 'admin' }
 ];
 

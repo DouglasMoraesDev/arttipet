@@ -1,7 +1,7 @@
 // Função para enviar a mensagem via WhatsApp
 function sendVoucher(client) {
     const clientPhone = client.phone;  // Número de telefone do cliente
-    const voucherMessage = encodeURIComponent('Parabéns! Você ganhou um voucher de 01 lavagem simples no Guerra estética automotiva, continue usando nossos serviços e acumulando pontos!');
+    const voucherMessage = encodeURIComponent('Parabéns, você completou 10 banhos/tosa na Artti Pet, e acabou de ganhar um banho para seu pet totalmente grátis! Continue usando nossos serviços e acumulado pontos 🐶😺💜💛');
     const whatsappUrl = `https://wa.me/${clientPhone}?text=${voucherMessage}`;
 
     // Envia a mensagem pelo WhatsApp
